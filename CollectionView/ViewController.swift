@@ -61,8 +61,10 @@ extension ViewController: LayoutDelegate {
   func collectionView(_ collectionView: UICollectionView, heightForItemAtIndexPath indexPath: IndexPath) -> CGFloat {
     let label = UILabel()
     label.text = cards[indexPath.row]
-    let size = label.systemLayoutSizeFitting(CGSize(width: width, height: 100.0), withHorizontalFittingPriority: .fittingSizeLevel, verticalFittingPriority: .defaultHigh)
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.numberOfLines = 0
     
-    return CGFloat(indexPath.row + 1) * 100
+    let size = label.systemLayoutSizeFitting(CGSize(width: width, height: 100), withHorizontalFittingPriority: .required, verticalFittingPriority: .fittingSizeLevel)
+    return size.height
   }
 }
